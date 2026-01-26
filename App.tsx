@@ -102,15 +102,7 @@ const App: React.FC = () => {
           <div>
             <span>Jurisdiction: California, USA</span>
           </div>
-          <div className="mt-2 sm:mt-0 flex flex-col sm:flex-row sm:items-center gap-4">
-            <a
-              href="https://danmercede.com"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-neutral-600 transition-colors"
-            >
-              Context: danmercede.com
-            </a>
+          <div className="mt-2 sm:mt-0">
             <span>&copy; {currentYear} Daniel Mercede. All Rights Reserved.</span>
           </div>
         </footer>
