@@ -43,12 +43,12 @@ export const ORGANIZATIONS: Organization[] = [
 export const LINKS: LinkItem[] = [
   {
     label: "Professional Hub",
-    url: "https://danmercede.com",
+    url: "https://www.danmercede.com",
     displayUrl: "danmercede.com"
   },
   {
     label: "Identity Summary",
-    url: "https://danmercede.info",
+    url: "https://www.danmercede.info",
     displayUrl: "danmercede.info"
   },
   {
