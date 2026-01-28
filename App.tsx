@@ -14,7 +14,7 @@ const App: React.FC = () => {
           {/* Profile Image - GCS hosted image */}
           <div className="mb-6">
             <img
-              src="https://storage.googleapis.com/cosmocrat/cosmocrat_logos_graphics/executive/dan-mercede-executive-authority.webp"
+              src="/dan-mercede-executive-authority.webp"
               alt="Daniel Mercede, systems architect and technology executive"
               className="w-20 h-20 rounded-full border border-neutral-100 object-cover"
             />
