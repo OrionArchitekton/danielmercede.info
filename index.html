@@ -44,27 +44,21 @@
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "@id": "https://www.danielmercede.info/#person",
-      "name": "Daniel Mercede",
-      "alternateName": ["Dan Mercede", "Daniel “Dan” Mercede"],
-      "jobTitle": "Systems Architect & Technology Executive",
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "CA",
-        "addressCountry": "US"
-      },
-      "url": "https://www.danielmercede.info/",
-      "image": "https://storage.googleapis.com/cosmocrat/cosmocrat_logos_graphics/executive/dan-mercede-executive-authority.webp",
-      "sameAs": [
-        "https://www.danmercede.com/",
-        "https://www.danielmercede.com/",
-        "https://www.linkedin.com/in/danmercede"
-      ],
-      "affiliation": [
-        { "@type": "Organization", "name": "Orion Apex Capital", "url": "https://orionapexcapital.com/" },
-        { "@type": "Organization", "name": "Orion Intelligence Agency", "url": "https://orionintelligence.ai/" },
-        { "@type": "Organization", "name": "Cosmocrat", "url": "https://cosmocrat.ai/" }
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://www.danielmercede.info/#webpage",
+          "url": "https://www.danielmercede.info/",
+          "name": "Daniel “Dan” Mercede — Professional Identity",
+          "about": { "@id": "https://www.danmercede.com/#person" },
+          "isPartOf": { "@id": "https://www.danielmercede.info/#website" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://www.danielmercede.info/#website",
+          "url": "https://www.danielmercede.info/",
+          "publisher": { "@id": "https://www.danmercede.com/#person" }
+        }
       ]
     }
     </script>
