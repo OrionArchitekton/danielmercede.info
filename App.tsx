@@ -1,9 +1,11 @@
 import React from 'react';
 import { SectionHeader } from './components/SectionHeader';
-import { COMPETENCIES, ORGANIZATIONS, LINKS } from './constants';
+import { COMPETENCIES, ORGANIZATIONS, LINKS, getImageMeta } from './constants';
 
 const App: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const profileSrc = "/dan-mercede-executive-authority.png";
+  const profileMeta = getImageMeta(profileSrc);
 
   return (
     <div className="min-h-screen bg-neutral-50 py-12 px-4 sm:px-6 lg:px-8 font-sans selection:bg-neutral-200 selection:text-neutral-900">
@@ -14,8 +16,8 @@ const App: React.FC = () => {
           {/* Profile Image - GCS hosted image */}
           <div className="mb-6">
             <img
-              src="/dan-mercede-executive-authority.webp"
-              alt="Daniel Mercede, systems architect and technology executive"
+              src={profileSrc}
+              alt={profileMeta.alt}
               className="w-20 h-20 rounded-full border border-neutral-100 object-cover"
             />
           </div>
