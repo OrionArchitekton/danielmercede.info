@@ -26,12 +26,12 @@ const App: React.FC = () => {
             Daniel "Dan" Mercede
           </h1>
           <p className="text-lg text-neutral-600 font-light mb-6">
-            Systems Architect & Technology Executive
+            Runtime Governance Architect & Technology Executive
           </p>
 
           {/* Name Equivalence / Clarification */}
           <p className="text-neutral-500 text-sm border-l-2 border-neutral-100 pl-3 py-1 leading-relaxed max-w-2xl">
-            Daniel “Dan” Mercede is a systems architect and technology executive whose professional work is commonly referenced under both his full name and shortened form.
+            Daniel "Dan" Mercede is a runtime governance architect and technology executive whose professional work is commonly referenced under both his full name and shortened form.
           </p>
         </header>
 
@@ -39,7 +39,7 @@ const App: React.FC = () => {
         <section>
           <SectionHeader title="Professional Overview" />
           <p className="text-neutral-700 leading-relaxed">
-            Daniel Mercede is a California-based systems architect focusing on the intersection of governed artificial intelligence and enterprise infrastructure. His current professional work centers on building reliability frameworks for automated decision-making systems and orchestrating complex AI agent environments. As an executive technologist, Dan Mercede oversees the deployment of execution-critical platforms where precision and governance are paramount.
+            Daniel Mercede is a California-based runtime governance architect who designs governed AI operating systems that enforce auditability, policy control, and human oversight at runtime. His current professional work centers on building execution control planes for enterprise AI — systems that fail closed, generate audit-grade receipts, and enforce authority gates. As an executive technologist, Dan Mercede oversees the deployment of production-grade platforms where runtime governance is non-negotiable.
           </p>
         </section>
 
@@ -100,12 +100,27 @@ const App: React.FC = () => {
         </section>
 
         {/* Footer */}
-        <footer className="mt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs text-neutral-400">
-          <div>
-            <span>Jurisdiction: California, USA</span>
+        <footer className="mt-8 flex flex-col gap-4 text-xs text-neutral-400">
+          <div className="flex flex-col items-center gap-1 pt-2">
+            <a
+              href="https://www.orionintelligenceagency.com/book"
+              target="_blank"
+              rel="noreferrer"
+              className="text-neutral-700 font-medium hover:text-black hover:underline underline-offset-4 transition-colors"
+            >
+              Book a Runtime Governance Readiness Scan &rarr;
+            </a>
+            <span className="text-neutral-400 text-[10px] tracking-wide">
+              Gap map &bull; Failure heatmap &bull; Enforcement checklist &bull; 30/60/90 plan
+            </span>
           </div>
-          <div className="mt-2 sm:mt-0">
-            <span>&copy; {currentYear} Daniel Mercede. All Rights Reserved.</span>
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
+            <div>
+              <span>Jurisdiction: California, USA</span>
+            </div>
+            <div className="mt-2 sm:mt-0">
+              <span>&copy; {currentYear} Daniel Mercede. All Rights Reserved.</span>
+            </div>
           </div>
         </footer>
 
