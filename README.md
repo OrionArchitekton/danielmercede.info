@@ -46,7 +46,7 @@ The page footer carries a single call to action — "Book a Runtime Governance R
 - **React 19** + **react-dom 19**
 - **TypeScript ~5.8**, **@vitejs/plugin-react**
 - **Tailwind CSS** loaded via CDN (`cdn.tailwindcss.com`); no local Tailwind build step
-- React/react-dom also loaded via an `importmap` in `index.html` so the served HTML mounts directly; Vite produces the production bundle
+- React/react-dom are bundled by Vite for production; the importmap in index.html is currently redundant as dependencies are not externalized in vite.config.ts
 - **schema.org Person / WebPage / WebSite** JSON-LD, Open Graph + Twitter Card meta
 - Hosted on **Vercel** (static hosting + SPA rewrites)
 
