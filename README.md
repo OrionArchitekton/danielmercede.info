@@ -137,7 +137,7 @@ This identity surface is one of a set of intentionally separated personal domain
 - **Identity Summary:** https://www.danielmercede.info
 - **LinkedIn:** https://www.linkedin.com/in/danmercede
 
-Each property serves a distinct role and self-canonicals independently.
+Each property serves a distinct role and is self-canonical.
 
 ---
 
