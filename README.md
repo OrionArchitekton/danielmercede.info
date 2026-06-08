@@ -60,7 +60,7 @@ Requires Node.js (Vite 6 / React 19) and npm.
 git clone https://github.com/OrionArchitekton/danielmercede.info.git
 cd danielmercede.info
 npm install
-npm run dev      # Vite dev server on http://0.0.0.0:3000
+npm run dev      # Vite dev server on http://localhost:3000
 ```
 
 Build and preview the production bundle:
