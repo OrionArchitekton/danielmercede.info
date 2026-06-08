@@ -134,7 +134,7 @@ This is the site's explicit purpose, so the SEO surface is part of the contract:
 This identity surface is one of a set of intentionally separated personal domains. The following are rendered as reference links on the page (`constants.ts`):
 
 - **Professional Hub:** https://www.danmercede.com
-- **Identity Summary:** https://www.danmercede.info
+- **Identity Summary:** https://www.danielmercede.info
 - **LinkedIn:** https://www.linkedin.com/in/danmercede
 
 Each property serves a distinct role and self-canonicals independently.
