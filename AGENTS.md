@@ -21,7 +21,10 @@ and non-marketing. Deployed via Vercel (`vercel.json`, SPA rewrite to
 Owns:
 
 - the danielmercede.info identity-clarification web surface: SPA source,
-  static assets under `public/`, Person structured data, sitemap/robots
+  static assets under `public/`, sitemap/robots, and the JSON-LD structured
+  data in `index.html` — WebPage and WebSite nodes that reference the
+  canonical Person entity at `https://www.danmercede.com/#person`; this site
+  emits no local Person node (the Person entity is owned by danmercede.com)
 
 Does not own:
 
