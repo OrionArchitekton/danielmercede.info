@@ -4,7 +4,7 @@ import { COMPETENCIES, ORGANIZATIONS, LINKS, getImageMeta } from './constants';
 
 const App: React.FC = () => {
   const currentYear = new Date().getFullYear();
-  const profileSrc = "/dan-mercede-executive-authority.png";
+  const profileSrc = "/dan-mercede-executive-authority-avatar.webp";
   const profileMeta = getImageMeta(profileSrc);
 
   return (
@@ -18,6 +18,8 @@ const App: React.FC = () => {
             <img
               src={profileSrc}
               alt={profileMeta.alt}
+              width={80}
+              height={80}
               className="w-20 h-20 rounded-full border border-neutral-100 object-cover"
             />
           </div>
@@ -78,14 +80,15 @@ const App: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-8">
             {LINKS.map((link, index) => (
               <div key={index} className="flex flex-col">
-                <span className="text-xs text-neutral-400 mb-0.5">{link.label}</span>
+                <span className="text-xs text-neutral-500 mb-0.5">{link.label}</span>
                 <a
                   href={link.url}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="text-neutral-800 hover:text-black hover:underline underline-offset-4 decoration-neutral-300 transition-colors"
                 >
                   {link.displayUrl}
+                  <span className="sr-only"> (opens in a new tab)</span>
                 </a>
               </div>
             ))}
@@ -94,23 +97,23 @@ const App: React.FC = () => {
 
         {/* Identity Note */}
         <section className="mt-16 pt-8 border-t border-neutral-100">
-          <p className="text-xs text-neutral-400 italic">
-            Identity Note: This document serves as a professional reference for the present-day work and identity of Daniel “Dan” Mercede, a systems architect and technology executive.
+          <p className="text-xs text-neutral-500 italic">
+            Identity Note: This document serves as a professional reference for the present-day work and identity of Daniel “Dan” Mercede, a runtime governance architect and technology executive.
           </p>
         </section>
 
         {/* Footer */}
-        <footer className="mt-8 flex flex-col gap-4 text-xs text-neutral-400">
+        <footer className="mt-8 flex flex-col gap-4 text-xs text-neutral-500">
           <div className="flex flex-col items-center gap-1 pt-2">
             <a
               href="https://www.orionintelligenceagency.com/book"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="text-neutral-700 font-medium hover:text-black hover:underline underline-offset-4 transition-colors"
             >
-              Book a Runtime Governance Readiness Scan &rarr;
+              Book a Runtime Governance Readiness Scan <span aria-hidden="true">&rarr;</span><span className="sr-only"> (opens in a new tab)</span>
             </a>
-            <span className="text-neutral-400 text-[10px] tracking-wide">
+            <span className="text-neutral-500 text-[10px] tracking-wide">
               Gap map &bull; Failure heatmap &bull; Enforcement checklist &bull; 30/60/90 plan
             </span>
           </div>

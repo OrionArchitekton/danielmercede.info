@@ -30,7 +30,7 @@ export const ORGANIZATIONS: Organization[] = [
     name: "Orion Intelligence Agency",
     role: "Director, Applied AI & Orchestration",
     description: "Enterprise AI reliability engineering and process automation.",
-    url: "https://orionintelligence.ai" // Hypothesized based on context, can be adjusted
+    url: "https://www.orionintelligenceagency.com"
   },
   {
     name: "Cosmocrat",
@@ -62,10 +62,10 @@ export type ImageMeta = { alt: string; description?: string };
 
 export const IMAGE_METADATA = {
   // Executive / Authority Set
-  "dan-mercede-executive-authority.png": {
-    alt: "Dan Mercede, Founder & Systems Architect of a governed AI operating system",
+  "dan-mercede-executive-authority-avatar.webp": {
+    alt: "Dan Mercede, Founder & Runtime Governance Architect of a governed AI operating system",
     description:
-      "Executive portrait of Dan Mercede, founder and systems architect focused on governed AI systems and enterprise control planes.",
+      "Executive portrait of Dan Mercede, founder and runtime governance architect focused on governed AI systems and enterprise control planes.",
   },
   "dan-mercede-executive-outdoor.png": {
     alt: "Dan Mercede, Founder & Systems Architect of a governed AI operating system",
