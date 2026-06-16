@@ -20,7 +20,7 @@ The site renders one profile card: a portrait, a professional overview, core com
 ## Identity Scope
 
 **Daniel "Dan" Mercede**
-Runtime Governance Architect & Technology Executive
+Founder & AI Systems Architect, Technology Executive
 California, USA
 
 Core competencies shown on the page (`constants.ts`):
