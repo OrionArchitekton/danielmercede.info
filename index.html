@@ -10,8 +10,6 @@
   <link rel="dns-prefetch" href="https://esm.sh" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
 
   <!-- Basic SEO -->
   <title>Daniel “Dan” Mercede — Professional Identity</title>
@@ -75,6 +73,12 @@
     </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font CSS after the parser-blocking Tailwind script so a slow fonts.googleapis.com
+       response cannot serialize ahead of (block) Tailwind execution; preconnects above
+       still warm the connection. display=swap avoids invisible-text on the font fetch. -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
   <style>
     body {
       font-family: 'Inter', sans-serif;
