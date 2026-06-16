@@ -28,7 +28,7 @@ const App: React.FC = () => {
             Daniel "Dan" Mercede
           </h1>
           <p className="text-lg text-neutral-600 font-light mb-6">
-            Runtime Governance Architect & Technology Executive
+            Founder & AI Systems Architect, Technology Executive
           </p>
 
           {/* Name Equivalence / Clarification */}
