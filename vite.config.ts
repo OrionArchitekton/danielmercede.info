@@ -51,6 +51,21 @@ function bodyBake(): Plugin {
           (_full, beforeId = '', afterId = '') => `<div${beforeId ?? ''}id="root"${afterId ?? ''}>${body}</div>`,
         );
         fs.writeFileSync(outFile, html);
+
+        // Identity-only guard: the crawler-ingested markup (#root inner body
+        // that answer engines fetch without executing JS) must not carry
+        // promotional / booking content. This surface is identity-clarification
+        // only (AGENTS.md / README "Purpose"). Fail the build if any marketing
+        // string leaks into the baked body — the booking CTA is excluded at
+        // bake time via PrerenderContext (see prerender.tsx / App.tsx).
+        const forbidden = ['orionintelligenceagency', 'readiness scan', 'book a', '/book'];
+        const bakedLower = body.toLowerCase();
+        const leaked = forbidden.filter((needle) => bakedLower.includes(needle));
+        if (leaked.length > 0) {
+          throw new Error(
+            `body-bake: identity-only guard tripped — baked markup contains promotional content: ${leaked.join(', ')}`,
+          );
+        }
       } finally {
         await ssrServer.close();
       }
