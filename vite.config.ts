@@ -22,9 +22,11 @@ function bodyBake(): Plugin {
       // (handles JSX + import.meta.env), then dispose it immediately.
       const ssrServer = await createServer({
         configFile: false,
+        root: __dirname,
         appType: 'custom',
         logLevel: 'silent',
         server: { middlewareMode: true },
+        plugins: [react()],
         resolve: { alias: { '@': path.resolve(__dirname, '.') } },
       });
       try {
@@ -36,11 +38,11 @@ function bodyBake(): Plugin {
           throw new Error('body-bake produced empty or h1-less markup');
         }
         let html = fs.readFileSync(outFile, 'utf8');
-        const emptyRoot = '<div id="root"></div>';
-        if (!html.includes(emptyRoot)) {
+        const rootRegex = /<div\s+id="root"\s*>([\s\S]*?)<\/div>/;
+        if (!rootRegex.test(html)) {
           throw new Error('body-bake: <div id="root"></div> not found in dist/index.html');
         }
-        html = html.replace(emptyRoot, `<div id="root">${body}</div>`);
+        html = html.replace(rootRegex, `<div id="root">${body}</div>`);
         fs.writeFileSync(outFile, html);
       } finally {
         await ssrServer.close();

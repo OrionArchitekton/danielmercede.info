@@ -18,7 +18,7 @@ const App: React.FC = () => {
       <main
         id="main-content"
         tabIndex={-1}
-        className="max-w-3xl mx-auto bg-white border border-neutral-200 shadow-sm p-8 md:p-12"
+        className="max-w-3xl mx-auto bg-white border border-neutral-200 shadow-sm p-8 md:p-12 focus:outline-none"
       >
 
         {/* Header Section */}
