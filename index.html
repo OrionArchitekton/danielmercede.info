@@ -5,6 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Resource hints: Google Fonts origins (React/react-dom are bundled by Vite, not
+       externalized to esm.sh, so the production page never fetches from esm.sh — no
+       esm.sh hint here). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
   <!-- Basic SEO -->
   <title>Daniel “Dan” Mercede — Professional Identity</title>
   <meta name="description"
@@ -27,6 +33,8 @@
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@danmercede" />
+  <meta name="twitter:creator" content="@danmercede" />
   <meta name="twitter:title" content="Daniel “Dan” Mercede — Professional Identity" />
   <meta name="twitter:description" content="Professional identity reference for Daniel “Dan” Mercede, runtime governance architect and technology executive." />
   <meta name="twitter:image" content="https://www.danielmercede.info/dan-mercede-og-card.jpg" />
@@ -65,9 +73,13 @@
     </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
+  <!-- Font CSS after the parser-blocking Tailwind script so a slow fonts.googleapis.com
+       response cannot serialize ahead of (block) Tailwind execution; preconnects above
+       still warm the connection. display=swap avoids invisible-text on the font fetch. -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
+  <style>
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f9fafb;
