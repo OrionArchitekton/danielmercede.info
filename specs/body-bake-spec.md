@@ -36,17 +36,34 @@ Googlebot) renders the SPA, and that path is fragile/second-class.
    subject's name and multiple `<p>` paragraphs of bio copy. Verified:
    `dist/index.html` has h1>=1 and p>=1 inside the root, with real text (not the
    empty shell).
-2. **AC-W1-2 — Client still mounts.** `dist/index.html` retains exactly one
-   `<div id="root">` and the `<script type="module">` entry, so the browser
-   client mounts and renders the same tree (CSR for users, prerender for
-   crawlers). No second root, no hydration-mismatch contract.
+2. **AC-W1-2 — Client still mounts (CSR replacement, not hydration).** This is a
+   CSR-replacement model, not an SSR hydration contract: `dist/index.html`
+   retains exactly one `<div id="root">` and the `<script type="module">` entry,
+   so the browser `createRoot().render()` mounts and replaces the baked DOM with
+   the live tree. No second root, no hydration-mismatch contract. The baked
+   (crawler-ingested) tree and the runtime (human) tree are identical EXCEPT for
+   one deliberate, contract-driven omission: the promotional footer booking CTA
+   ("Book a Runtime Governance Readiness Scan" →
+   `orionintelligenceagency.com/book`) is excluded from the build-time bake via
+   `PrerenderContext` (`prerender.tsx` renders `App` under the provider with
+   `value=true`; the runtime entry mounts no provider, default `false`). This
+   keeps the crawler-ingested identity surface promotional-content-free per
+   AGENTS.md ("does not own promotional, marketing, or business content") while
+   leaving the human-facing render's CTA intact — whether the CTA belongs on the
+   runtime surface at all is a separate brand decision owned by the domain owner,
+   not this build-time change. The bake step asserts the baked body contains no
+   booking/marketing strings (`orionintelligenceagency`, `readiness scan`,
+   `book a`, `/book`) and fails the build if any leak (see AC-W1-4).
 3. **AC-W1-3 — Bake is build-time + browserless.** The bake runs inside the Vite
    build via a plugin (`bodyBake` in `vite.config.ts`) using
    `react-dom/server` `renderToStaticMarkup`. No headless browser, no new SSR
    runtime dependency, no new framework.
 4. **AC-W1-4 — Fail-loud.** The build fails if the prerender produces empty /
-   h1-less markup, or if the `<div id="root"></div>` anchor is absent — so a
-   future refactor cannot silently ship an empty body again.
+   h1-less markup, if the `<div id="root"></div>` anchor is absent, or if the
+   baked body contains any promotional booking/marketing string
+   (case-insensitive: `orionintelligenceagency`, `readiness scan`, `book a`,
+   `/book`) — so a future refactor cannot silently ship an empty body again, nor
+   leak promotional content back into the crawler-ingested identity surface.
 5. **AC-W17-1 — ProfilePage type.** The head JSON-LD WebPage node is
    `@type: ["ProfilePage", "WebPage"]` and carries
    `mainEntity -> https://www.danmercede.com/#person`. No local Person node is
