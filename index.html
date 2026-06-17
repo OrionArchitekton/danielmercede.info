@@ -47,7 +47,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" href="/favicon.ico">
-  <meta name="theme-color" content="#111111" />
+  <meta name="theme-color" content="#f9fafb" />
 
   <!-- JSON-LD Structured Data (Person Schema) -->
   <script type="application/ld+json">
@@ -55,10 +55,11 @@
       "@context": "https://schema.org",
       "@graph": [
         {
-          "@type": "WebPage",
+          "@type": ["ProfilePage", "WebPage"],
           "@id": "https://www.danielmercede.info/#webpage",
           "url": "https://www.danielmercede.info/",
           "name": "Daniel “Dan” Mercede — Professional Identity",
+          "mainEntity": { "@id": "https://www.danmercede.com/#person" },
           "about": { "@id": "https://www.danmercede.com/#person" },
           "isPartOf": { "@id": "https://www.danielmercede.info/#website" }
         },
@@ -83,6 +84,18 @@
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f9fafb;
+    }
+
+    /* a11y: honor reduced-motion requests (parity with the hub a11y pass). */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
   <script type="importmap">

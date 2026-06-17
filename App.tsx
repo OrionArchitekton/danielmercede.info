@@ -9,7 +9,17 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-neutral-50 py-12 px-4 sm:px-6 lg:px-8 font-sans selection:bg-neutral-200 selection:text-neutral-900">
-      <main className="max-w-3xl mx-auto bg-white border border-neutral-200 shadow-sm p-8 md:p-12">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-neutral-900 focus:text-white focus:rounded"
+      >
+        Skip to main content
+      </a>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="max-w-3xl mx-auto bg-white border border-neutral-200 shadow-sm p-8 md:p-12"
+      >
 
         {/* Header Section */}
         <header className="mb-10">
