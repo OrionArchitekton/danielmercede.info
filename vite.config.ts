@@ -16,7 +16,9 @@ function bodyBake(): Plugin {
     apply: 'build',
     async closeBundle() {
       const outFile = path.resolve(__dirname, 'dist/index.html');
-      if (!fs.existsSync(outFile)) return;
+      if (!fs.existsSync(outFile)) {
+        throw new Error('body-bake: dist/index.html not found');
+      }
 
       // Use a transient SSR-capable Vite server to load the TSX prerender entry
       // (handles JSX + import.meta.env), then dispose it immediately.
@@ -38,11 +40,16 @@ function bodyBake(): Plugin {
           throw new Error('body-bake produced empty or h1-less markup');
         }
         let html = fs.readFileSync(outFile, 'utf8');
-        const rootRegex = /<div\s+id="root"\s*>([\s\S]*?)<\/div>/;
+        // Tolerate attribute/whitespace variation on the root div and preserve
+        // any attributes (e.g. data-*) while replacing only its inner content.
+        const rootRegex = /<div\b([^>]*\s)?id=["']root["']([^>]*)>([\s\S]*?)<\/div>/;
         if (!rootRegex.test(html)) {
-          throw new Error('body-bake: <div id="root"></div> not found in dist/index.html');
+          throw new Error('body-bake: <div id="root">...</div> not found in dist/index.html');
         }
-        html = html.replace(rootRegex, `<div id="root">${body}</div>`);
+        html = html.replace(
+          rootRegex,
+          (_full, beforeId = '', afterId = '') => `<div${beforeId ?? ''}id="root"${afterId ?? ''}>${body}</div>`,
+        );
         fs.writeFileSync(outFile, html);
       } finally {
         await ssrServer.close();
