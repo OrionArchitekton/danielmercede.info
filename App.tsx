@@ -1,15 +1,31 @@
 import React from 'react';
 import { SectionHeader } from './components/SectionHeader';
 import { COMPETENCIES, ORGANIZATIONS, LINKS, getImageMeta } from './constants';
+import { PrerenderContext } from './prerender-context';
 
 const App: React.FC = () => {
   const currentYear = new Date().getFullYear();
   const profileSrc = "/dan-mercede-executive-authority-avatar.webp";
   const profileMeta = getImageMeta(profileSrc);
+  // During the build-time body-bake the App renders through the prerender
+  // provider (value=true), which excludes the promotional booking CTA from the
+  // crawler-ingested markup. At runtime no provider is mounted, so the default
+  // (false) keeps the CTA in the human-facing render.
+  const isPrerender = React.useContext(PrerenderContext);
 
   return (
     <div className="min-h-screen bg-neutral-50 py-12 px-4 sm:px-6 lg:px-8 font-sans selection:bg-neutral-200 selection:text-neutral-900">
-      <main className="max-w-3xl mx-auto bg-white border border-neutral-200 shadow-sm p-8 md:p-12">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-neutral-900 focus:text-white focus:rounded"
+      >
+        Skip to main content
+      </a>
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="max-w-3xl mx-auto bg-white border border-neutral-200 shadow-sm p-8 md:p-12 focus:outline-none"
+      >
 
         {/* Header Section */}
         <header className="mb-10">
@@ -104,19 +120,24 @@ const App: React.FC = () => {
 
         {/* Footer */}
         <footer className="mt-8 flex flex-col gap-4 text-xs text-neutral-500">
-          <div className="flex flex-col items-center gap-1 pt-2">
-            <a
-              href="https://www.orionintelligenceagency.com/book"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-700 font-medium hover:text-black hover:underline underline-offset-4 transition-colors"
-            >
-              Book a Runtime Governance Readiness Scan <span aria-hidden="true">&rarr;</span><span className="sr-only"> (opens in a new tab)</span>
-            </a>
-            <span className="text-neutral-500 text-[10px] tracking-wide">
-              Gap map &bull; Failure heatmap &bull; Enforcement checklist &bull; 30/60/90 plan
-            </span>
-          </div>
+          {/* Promotional booking CTA — human-facing runtime render only.
+              Excluded from the build-time body-bake so the crawler-ingested
+              HTML stays identity-clarification only (see AGENTS.md). */}
+          {!isPrerender && (
+            <div className="flex flex-col items-center gap-1 pt-2">
+              <a
+                href="https://www.orionintelligenceagency.com/book"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-700 font-medium hover:text-black hover:underline underline-offset-4 transition-colors"
+              >
+                Book a Runtime Governance Readiness Scan <span aria-hidden="true">&rarr;</span><span className="sr-only"> (opens in a new tab)</span>
+              </a>
+              <span className="text-neutral-500 text-[10px] tracking-wide">
+                Gap map &bull; Failure heatmap &bull; Enforcement checklist &bull; 30/60/90 plan
+              </span>
+            </div>
+          )}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
             <div>
               <span>Jurisdiction: California, USA</span>
