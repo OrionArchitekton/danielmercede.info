@@ -49,7 +49,8 @@
   <link rel="icon" href="/favicon.ico">
   <meta name="theme-color" content="#f9fafb" />
 
-  <!-- JSON-LD Structured Data (Person Schema) -->
+  <!-- JSON-LD: WebPage/WebSite backlinking identity to the hub Person
+       (danmercede.com/#person); no local Person node, per the hub-spoke rule. -->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -73,31 +74,12 @@
     }
     </script>
 
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font CSS after the parser-blocking Tailwind script so a slow fonts.googleapis.com
-       response cannot serialize ahead of (block) Tailwind execution; preconnects above
-       still warm the connection. display=swap avoids invisible-text on the font fetch. -->
+  <!-- Tailwind is bundled at build time (compiled stylesheet emitted by Vite);
+       the render-blocking Tailwind CDN JIT compiler and the base <style> have
+       moved to tailwind.config.js + index.css. Font CSS is non-blocking
+       (preconnect above warms the origin; display=swap avoids invisible text). -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f9fafb;
-    }
-
-    /* a11y: honor reduced-motion requests (parity with the hub a11y pass). */
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
   <script type="importmap">
 {
   "imports": {

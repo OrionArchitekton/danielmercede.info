@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base styles moved out of the inline index.html <style> when Tailwind was
+   bundled. The CDN JIT compiler is gone; these are emitted into the bundled
+   stylesheet so the served page renders identically. */
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9fafb;
+  }
+
+  /* a11y: honor reduced-motion requests (parity with the hub a11y pass). */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
