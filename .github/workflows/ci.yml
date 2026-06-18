@@ -1,0 +1,63 @@
+name: CI
+
+# Round-2 R8/R9: first CI for this thin spoke. Builds the Vite app and then
+# asserts the BUILT (served) dist/index.html crawler body is non-empty. The
+# committed index.html ships an empty <div id="root"></div>; the body-bake Vite
+# plugin (vite.config.ts) injects the static-rendered App markup into
+# dist/index.html at build time so answer engines that fetch raw HTML without
+# executing JS (ChatGPT / Perplexity / Claude) see a real body. This gate
+# guards the empty-body regression class: it fails if the baked body in the
+# served HTML carries no <h1> or no <p>.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-bake-assert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # No committed lockfile on these thin spokes — use `npm install`, never
+      # `npm ci`, and never stage a generated lockfile.
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test
+        run: npm test --if-present
+
+      - name: Build
+        run: npm run build
+
+      # R9: assert the BUILT/served DOM body (not the emitter string). Read the
+      # built dist/index.html and fail if the baked crawler body is empty —
+      # require at least one <h1> and at least one <p>. Precise patterns avoid
+      # false matches on tags like <path>/<picture>.
+      - name: Bake-output assertion (built dist/index.html crawler body non-empty)
+        run: |
+          set -euo pipefail
+          OUT="dist/index.html"
+          if [ ! -f "$OUT" ]; then
+            echo "bake-assert: built $OUT not found — build did not emit the served HTML" >&2
+            exit 1
+          fi
+          H1=$(grep -oE '<h1( |>)' "$OUT" | wc -l | tr -d ' ')
+          P=$(grep -oE '<p( |>)' "$OUT" | wc -l | tr -d ' ')
+          echo "bake-assert: built $OUT — <h1>=$H1 <p>=$P"
+          if [ "$H1" -lt 1 ] || [ "$P" -lt 1 ]; then
+            echo "bake-assert: FAIL — baked crawler body is empty (<h1>=$H1 <p>=$P); expected <h1>>=1 and <p>>=1" >&2
+            echo "The served dist/index.html <div id=\"root\"> body is missing real content — empty-body regression." >&2
+            exit 1
+          fi
+          echo "bake-assert: PASS — built crawler body is non-empty"
