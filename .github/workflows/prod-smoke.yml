@@ -1,0 +1,59 @@
+name: Prod Smoke
+
+# Round-2 R5: post-deploy synthetic smoke (creds-free). CI (ci.yml) asserts the
+# BUILT dist/index.html crawler body is non-empty, but a green build does not
+# prove the LIVE served output is non-empty — that is exactly the empty-body
+# regression class that survived CI for months ("CI tests the BUILD not the
+# SERVED output"). This workflow curls the live production URL and asserts the
+# served HTML carries a real crawler body: at least one <h1>, at least one <p>,
+# and at least one JSON-LD (<script type="application/ld+json">) block.
+#
+# There is no Vercel->GitHub deployment_status integration on this repo, so this
+# runs on a daily schedule (unique minute per repo) plus manual dispatch. Pure
+# curl + grep — no secrets.
+
+on:
+  schedule:
+    - cron: '17 13 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prod-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl live prod and assert served crawler body
+        run: |
+          set -euo pipefail
+          URL="https://danielmercede.info"
+          echo "prod-smoke: fetching $URL"
+          HTML=$(curl -sL --fail --max-time 30 "$URL")
+
+          H1=$(printf '%s' "$HTML" | grep -oE '<h1( |>)' | wc -l | tr -d ' ')
+          P=$(printf '%s' "$HTML" | grep -oE '<p( |>)' | wc -l | tr -d ' ')
+          LD=$(printf '%s' "$HTML" | grep -oE '<script[^>]*type=["'"'"']application/ld\+json' | wc -l | tr -d ' ')
+
+          echo "prod-smoke: served $URL — <h1>=$H1 <p>=$P json-ld=$LD"
+
+          FAIL=0
+          if [ "$H1" -lt 1 ]; then
+            echo "prod-smoke: FAIL — no <h1> in served HTML (empty-body regression on live)" >&2
+            FAIL=1
+          fi
+          if [ "$P" -lt 1 ]; then
+            echo "prod-smoke: FAIL — no <p> in served HTML (empty-body regression on live)" >&2
+            FAIL=1
+          fi
+          if [ "$LD" -lt 1 ]; then
+            echo "prod-smoke: FAIL — no <script type=\"application/ld+json\"> block in served HTML (JSON-LD/AEO dropped on live)" >&2
+            FAIL=1
+          fi
+
+          if [ "$FAIL" -ne 0 ]; then
+            echo "prod-smoke: FAIL — live served output at $URL is missing required crawler content" >&2
+            exit 1
+          fi
+
+          echo "prod-smoke: PASS — live served output has <h1>>=1, <p>>=1, json-ld>=1"
