@@ -57,7 +57,7 @@ const App: React.FC = () => {
         <section>
           <SectionHeader title="Professional Overview" />
           <p className="text-neutral-700 leading-relaxed">
-            Daniel Mercede is a California-based runtime governance architect who designs governed AI operating systems that enforce auditability, policy control, and human oversight at runtime. His current professional work centers on building execution control planes for enterprise AI — systems that fail closed, generate audit-grade receipts, and enforce authority gates. As an executive technologist, Dan Mercede oversees the deployment of production-grade platforms where runtime governance is non-negotiable.
+            Daniel Mercede is a San Diego-based runtime governance architect who designs governed AI operating systems that enforce auditability, policy control, and human oversight at runtime. His current professional work centers on building execution control planes for enterprise AI: systems that fail closed, generate audit-grade receipts, and enforce authority gates. As an executive technologist, Dan Mercede oversees the deployment of production-grade platforms where runtime governance is non-negotiable.
           </p>
         </section>
 
@@ -140,7 +140,7 @@ const App: React.FC = () => {
           )}
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
             <div>
-              <span>Jurisdiction: California, USA</span>
+              <span>Jurisdiction: San Diego, CA</span>
             </div>
             <div className="mt-2 sm:mt-0">
               <span>&copy; {currentYear} Daniel Mercede. All Rights Reserved.</span>
