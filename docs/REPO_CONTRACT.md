@@ -73,8 +73,8 @@ git diff --check
 ```
 
 For implementation changes, follow `AGENTS.md`; this repo declares `npm run
-build`, `npm run dev`, and `npm run preview` but has no committed lockfile,
-test, or lint script.
+build`, `npm test`, `npm run dev`, and `npm run preview` but has no committed
+lockfile or lint script.
 
 ## Basis
 
