@@ -55,6 +55,26 @@ export const LINKS: LinkItem[] = [
     label: "LinkedIn Profile",
     url: "https://www.linkedin.com/in/danmercede",
     displayUrl: "linkedin.com/in/danmercede"
+  },
+  {
+    label: "GitHub",
+    url: "https://github.com/OrionArchitekton",
+    displayUrl: "github.com/OrionArchitekton"
+  },
+  {
+    label: "X",
+    url: "https://x.com/danmercede",
+    displayUrl: "x.com/danmercede"
+  },
+  {
+    label: "dev.to",
+    url: "https://dev.to/danmercede",
+    displayUrl: "dev.to/danmercede"
+  },
+  {
+    label: "Hashnode",
+    url: "https://danmercede.hashnode.dev",
+    displayUrl: "danmercede.hashnode.dev"
   }
 ];
 
