@@ -75,6 +75,16 @@ export const LINKS: LinkItem[] = [
     label: "Hashnode",
     url: "https://danmercede.hashnode.dev",
     displayUrl: "danmercede.hashnode.dev"
+  },
+  {
+    label: "YouTube",
+    url: "https://www.youtube.com/@danmercede",
+    displayUrl: "youtube.com/@danmercede"
+  },
+  {
+    label: "Sessionize",
+    url: "https://sessionize.com/dan-mercede/",
+    displayUrl: "sessionize.com/dan-mercede"
   }
 ];
 
