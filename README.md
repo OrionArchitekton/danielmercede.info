@@ -1,4 +1,4 @@
-# Daniel Mercede — Professional Identity
+# Daniel Mercede - Professional Identity
 
 A single-page professional identity site for **Daniel "Dan" Mercede**, built to give search engines, platforms, and professional references clear, present-day identity context.
 
@@ -20,23 +20,23 @@ The site renders one profile card: a portrait, a professional overview, core com
 ## Identity Scope
 
 **Daniel "Dan" Mercede**
-Founder & AI Systems Architect, Technology Executive
+Founder, operator, and systems builder
 California, USA
 
 Core competencies shown on the page (`constants.ts`):
 
-- **Governed AI Systems** — compliant, controlled AI environments for enterprise deployment
-- **AI Orchestration** — multi-agent workflows and automated decision pipelines
-- **Enterprise Execution Infrastructure** — reliability engineering for high-stakes automated processes
-- **Financial Systems Architecture** — automated trading and capital management platforms
+- **Operator-led AI Workflows** - owned, governed workflows teams can run
+- **AI Orchestration** - multi-agent workflows and automated decision pipelines
+- **AI Strategy and Engineering** - strategy, leadership, engineering, agents for one workflow
+- **Financial Systems Architecture** - automated trading and capital management platforms
 
 Affiliations rendered on the page:
 
-- **Orion Apex Capital** — Founder & Systems Architect
-- **Orion Intelligence Agency** — Director, Applied AI & Orchestration
-- **Cosmocrat** — Platform Architect
+- **Orion Apex Capital** - Founder & Systems Architect
+- **Orion Intelligence Agency** - Director, Applied AI & Orchestration
+- **Cosmocrat** - Platform Architect
 
-The page footer carries a single call to action — "Book a Runtime Governance Readiness Scan" — linking to `orionintelligenceagency.com/book`.
+The page footer carries a single call to action - "Work with OIA on one workflow" - linking to `orionintelligenceagency.com/book`.
 
 ---
 
@@ -70,7 +70,7 @@ npm run build    # outputs to dist/
 npm run preview  # serves the built dist/ locally
 ```
 
-There is no `.env.example` and no required environment variables — the site is fully static and reads no runtime secrets. See the note under **Configuration** about a leftover scaffold define.
+There is no `.env.example` and no required environment variables - the site is fully static and reads no runtime secrets. See the note under **Configuration** about a leftover scaffold define.
 
 ---
 
@@ -87,7 +87,7 @@ define: {
 }
 ```
 
-No source file references `API_KEY` or any Gemini/AI client, so this is dead config. It is safe to remove. **Do not set a `GEMINI_API_KEY` at build time** — if one were present it would be inlined into the public client bundle, since these defines are evaluated at build time.
+No source file references `API_KEY` or any Gemini/AI client, so this is dead config. It is safe to remove. **Do not set a `GEMINI_API_KEY` at build time** - if one were present it would be inlined into the public client bundle, since these defines are evaluated at build time.
 
 ---
 
