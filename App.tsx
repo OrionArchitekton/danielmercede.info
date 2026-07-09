@@ -44,12 +44,12 @@ const App: React.FC = () => {
             Daniel "Dan" Mercede
           </h1>
           <p className="text-lg text-neutral-600 font-light mb-6">
-            Founder & AI Systems Architect, Technology Executive
+            Founder, operator, and systems builder
           </p>
 
           {/* Name Equivalence / Clarification */}
           <p className="text-neutral-500 text-sm border-l-2 border-neutral-100 pl-3 py-1 leading-relaxed max-w-2xl">
-            Daniel "Dan" Mercede is a runtime governance architect and technology executive whose professional work is commonly referenced under both his full name and shortened form.
+            Daniel "Dan" Mercede is an operator and systems builder whose professional work is commonly referenced under both his full name and shortened form.
           </p>
         </header>
 
@@ -57,7 +57,7 @@ const App: React.FC = () => {
         <section>
           <SectionHeader title="Professional Overview" />
           <p className="text-neutral-700 leading-relaxed">
-            Daniel Mercede is a San Diego-based runtime governance architect who designs governed AI operating systems that enforce auditability, policy control, and human oversight at runtime. His current professional work centers on building execution control planes for enterprise AI: systems that fail closed, generate audit-grade receipts, and enforce authority gates. As an executive technologist, Dan Mercede oversees the deployment of production-grade platforms where runtime governance is non-negotiable.
+            Daniel Mercede is a San Diego-based operator and systems builder who helps teams turn AI from experiments into owned, governed workflows they can run. Through Orion Intelligence Agency he delivers SMB AI strategy consulting on one high-friction workflow at a time (strategy, leadership facilitation, engineering, agents), building and deploying rather than only advising. Governance and reliability remain proof depth: Cosmocrat is the Governed AI Operating System product when a control-plane substrate is the right fit.
           </p>
         </section>
 
@@ -114,13 +114,13 @@ const App: React.FC = () => {
         {/* Identity Note */}
         <section className="mt-16 pt-8 border-t border-neutral-100">
           <p className="text-xs text-neutral-500 italic">
-            Identity Note: This document serves as a professional reference for the present-day work and identity of Daniel “Dan” Mercede, a runtime governance architect and technology executive.
+            Identity Note: This document serves as a professional reference for the present-day work and identity of Daniel "Dan" Mercede, an operator and systems builder.
           </p>
         </section>
 
         {/* Footer */}
         <footer className="mt-8 flex flex-col gap-4 text-xs text-neutral-500">
-          {/* Promotional booking CTA — human-facing runtime render only.
+          {/* Promotional booking CTA - human-facing runtime render only.
               Excluded from the build-time body-bake so the crawler-ingested
               HTML stays identity-clarification only (see AGENTS.md). */}
           {!isPrerender && (
@@ -131,10 +131,10 @@ const App: React.FC = () => {
                 rel="noopener noreferrer"
                 className="text-neutral-700 font-medium hover:text-black hover:underline underline-offset-4 transition-colors"
               >
-                Book a Runtime Governance Readiness Scan <span aria-hidden="true">&rarr;</span><span className="sr-only"> (opens in a new tab)</span>
+                Work with OIA on one workflow <span aria-hidden="true">&rarr;</span><span className="sr-only"> (opens in a new tab)</span>
               </a>
               <span className="text-neutral-500 text-[10px] tracking-wide">
-                Gap map &bull; Failure heatmap &bull; Enforcement checklist &bull; 30/60/90 plan
+                Strategy &bull; Leadership &bull; Engineering &bull; Agents
               </span>
             </div>
           )}
